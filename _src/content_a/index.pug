@@ -1,0 +1,35 @@
+//- #########################################################
+
+	ファイル概要：下層ページ用テンプレートファイル
+
+	#########################################################
+
+
+
+//- サイト共通レイアウトファイルを継承
+extends ../_layout.pug
+
+//- _layout.pugのvarsを再定義
+block vars
+	//- サイト全体の設定ファイルの読み込み
+	include ../_config.pug
+	//- ページ用変数を設定
+	-
+		//- ページID
+		var id = "content_a"
+		//- ページ設定
+		var page = {
+			url : 'content_a.html',
+			title : '',
+			description : '',
+			keywords : '',
+			image : image_path + '/ogp.jpg'
+		}
+		//- CSSファイル名
+		var cssfile = 'style.css'
+		//- JSファイル名
+		var jsfile = 'content_a.js'	
+
+//- _layout.pugのcontentsを再定義
+block contents
+

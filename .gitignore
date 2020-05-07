@@ -1,0 +1,10 @@
+*.map
+.sass-cache
+prepros-6.config
+Thumbs.db
+.DS_Store
+*.swp
+*~
+.project
+.vscode
+.editorconfig

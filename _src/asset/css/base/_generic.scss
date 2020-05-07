@@ -1,0 +1,340 @@
+@charset "UTF-8";
+
+
+/*#########################################################
+
+基本設定
+
+#########################################################*/
+
+/* ========================================================
+単位用設定
+=========================================================*/
+// 基本単位
+$unit: 1rem; // フォントサイズ
+$font-size: $unit*1.6;
+$mg: 10px; // 余白の最小単位
+
+/* ========================================================
+色用設定
+=========================================================*/
+// カラー
+$c-bg: #fff;	// 背景色
+$c-text: #1b1b1b;	// フォントカラー
+$c-line: #959595;	// 線の色
+$c-anchor: #000;	// リンク色
+$c-anchor-hover: #959595;	// ホバー時のリンク色
+$c-anchor-active: #00a0e9; // アクティブ時のリンク色
+$c-anchor-visited: $c-anchor; // 訪問済み時のリンク色
+$c-anchor-focus: $c-anchor-hover; // フォーカス時のリンク色
+
+
+/* ========================================================
+フォント用設定
+=========================================================*/
+// フォント（import無し）
+$font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "Helvetica Neue", Helvetica, Arial, "メイリオ", Meiryo, sans-serif;
+
+// フォント（Google Fonts）
+// @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap');
+// font-family: "Noto Sans JP","ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","Helvetica Neue",Helvetica,Arial,"メイリオ",Meiryo,sans-serif
+
+
+/*#########################################################
+
+レイアウト用設定
+
+#########################################################*/
+
+/* ========================================================
+mixin mq用の変数設定
+=========================================================*/
+/*
+▼iOSデバイス
+iPhone5: 320 × 568
+iPhone 6-8: 375 × 667（1334x750）
+iPhone 6-8 plus: 414 × 736（1920x1080）
+iPhone X,XS,11Pro: 375 × 812（1125x2436）
+iPhone XR,11: 414 × 896（828x1792）
+
+iPad/iPad Mini: 768 × 1024
+iPad Pro: 1024 × 1366
+https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions
+
+▼ブートストラップ
+xs： ～767px
+sm： 768～991px
+md： 992～1119px
+lg： 1120px～
+*/
+$screen-sm-max: 767px;	// スマホ表示の最大値
+$screen-md-max: 1023px;	// タブレット表示の最大値
+
+/* ========================================================
+メディアクエリ用Mixin
+=========================================================*/
+@mixin mq($breakpoint) {
+	@media #{map-get($breakpoints, $breakpoint)} {
+		@content;
+	}
+}
+
+/*
+ステップ1.モバイルファーストかデスクトップファーストかを選ぶ
+ステップ2.該当する設定を有効化、その他をコメントアウトする。
+ステップ3.選択したタイプにより、「▼モバイルファーストの例」、「▼デスクトップファーストの例」のどちらかを参考にブレイクポイントを設定する。
+→実際の設定は_base.scssではなく、インポート元で行う。
+*/
+
+/*
+// ステップ2：モバイルファースト用（デスクトップファーストの場合はコメントアウト）
+$breakpoints: (
+	// タブレット
+	'md': 'screen and (min-width: ' + ($screen-sm-max + 1) + ') and (max-width: ' + ($screen-md-max) + ')',
+	// デスクトップ
+	'lg': 'screen and (min-width: ' + ($screen-sm-max + 1) + ')',
+) !default;
+*/
+
+/*
+// ステップ3：▼モバイルファーストの例
+// メディアクエリのブロック外にベースになるCSSを書く。
+// モバイルファーストでは小さい画面サイズから順々に指定。
+main{
+	// デフォルト
+	background: yellow;
+	// タブレット
+	@include mq(md){
+		background: orange;
+	}
+	// デスクトップ
+	@include mq(lg){
+		background: red;
+	}
+}
+//------------------------------
+*/
+
+// ステップ2：デスクトップファースト用（モバイルファーストの場合はコメントアウト）
+$breakpoints: (
+	// タブレット
+	'md': 'screen and (min-width: ' + ($screen-sm-max + 1) + ') and (max-width: ' + $screen-md-max + ')',
+	// スマートフォン
+	'sm': 'screen and (max-width: ' + $screen-sm-max + ')',
+) !default;
+
+/*
+// ステップ3：▼デスクトップファーストの例
+// メディアクエリのブロック外にベースになるCSSを書く。
+// デスクトップファーストでは大きい画面サイズから順々に指定。
+main{
+	// デフォルト
+	background: red;
+	// タブレット
+	@include mq(md){
+		background: orange;
+	}
+	// スマートフォン
+	@include mq(sm){
+		background: yellow;
+	}
+}
+//------------------------------
+*/
+
+// コンテンツ幅
+$w-content: 1080px;
+
+// コンテンツ幅エリアのプレースホルダ
+%w-content {
+	margin: auto;
+	width: $w-content;
+	padding: 0 $mg*4;
+	@include mq(sm){
+		padding: 0;
+		width: 95%;
+	}
+}
+
+
+
+
+/*#########################################################
+
+余白（なるべく使わない）
+
+#########################################################*/
+/* ========================================================
+下余白
+=========================================================*/
+/*
+.mb1{
+	margin-bottom: $mg*1;
+}
+.mb2{
+	margin-bottom: $mg*2;
+}
+.mb3{
+	margin-bottom: $mg*3;
+}
+.mb4{
+	margin-bottom: $mg*4;
+}
+.mb5{
+	margin-bottom: $mg*5;
+}
+*/
+/* ========================================================
+右余白
+=========================================================*/
+/*
+.mr1{
+	margin-right: $mg*1;
+}
+.mr2{
+	margin-right: $mg*2;
+}
+.mr3{
+	margin-right: $mg*3;
+}
+.mr4{
+	margin-right: $mg*4;
+}
+.mr5{
+	margin-right: $mg*5;
+}
+*/
+
+/*#########################################################
+
+共通アイコン・共通設定
+
+#########################################################*/
+
+/* ========================================================
+PC版・SP版専用設定(モバイルファースト用)
+=========================================================*/
+/*
+.pc{
+	display: none !important;
+	@include mq(lg){
+		display: inherit !important;
+	}
+}
+.sp{
+	display: inherit !important;
+	@include mq(lg){
+		display: none !important;
+	}
+}
+*/
+
+/* ========================================================
+PC版・SP版専用設定(PCファースト用)
+=========================================================*/
+.pc{
+	@include mq(sm){
+		display: none !important;
+	}
+}
+.sp{
+	display: none !important;
+	@include mq(sm){
+		display: inherit !important;
+	}
+}
+
+/* ========================================================
+矢印
+=========================================================*/
+$arrow-len: 9px;
+$arrow-width: 1px;
+%arrow_o_before{
+	width: $arrow-len;
+	height: $arrow-len;
+	border-top: $arrow-width solid #000;
+	border-right: $arrow-width solid #000;
+}
+%arrow_after{
+	width: $arrow-len;
+	height: $arrow-len;
+	border-top: $arrow-width solid #000;
+	border-right: $arrow-width solid #000;
+}
+.arrow {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	text-decoration: none;
+	text-indent: -10000px;
+	width: $arrow-len;
+	height: $arrow-len;
+	&::after,
+	&::before {
+		top: 0;
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		content: "";
+		margin: auto;
+		vertical-align: middle;
+	}
+	// 上下オープン矢印
+	&.-opendown::before,
+	&.-openup::before {
+		@extend %arrow_o_before;
+		transform: rotate(-45deg);
+	}
+	&.-opendown::before{
+		transform: rotate(135deg);
+	}
+	// 左右オープン矢印
+	&.-openleft::before,
+	&.-openright::before {
+		@extend %arrow_o_before;
+		transform: rotate(45deg);
+	}
+	&.-openleft::before{
+		transform: rotate(-135deg);
+	}
+
+	// 上下矢印
+	&.-up,
+	&.-down{
+		width: $arrow-len;
+		&::before{
+			right: 0;
+			width: $arrow-width;
+			height: $arrow-len;
+			background: #000;
+		}
+		&::after{
+			@extend %arrow_after;
+			transform: rotate(-45deg);
+		}
+	}
+	&.-down{
+		&::after{
+			transform: rotate(135deg);
+		}
+	}
+
+	// 左右矢印
+	&.-left,
+	&.-right{
+		&::before{
+			width: $arrow-len;
+			height: $arrow-width;
+			background: #000;
+		}
+		&::after{
+			@extend %arrow_after;
+			transform: rotate(45deg);
+		}
+	}
+	&.-left::after{
+		transform: rotate(-135deg);
+	}
+}
+
+

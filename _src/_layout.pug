@@ -1,0 +1,24 @@
+//- #########################################################
+
+	ファイル概要：サイト共通レイアウトファイル
+
+	#########################################################
+
+//- 再定義用変数
+block vars
+
+doctype html
+html(lang="ja")
+	//- HEAD要素
+	head
+		//- HEAD要素用ファイルの読み込み
+		include include/_inc_head.pug
+
+	//- BODY要素
+	body(class=key)
+		//- ヘッダ用ファイルの読み込み
+		include include/_inc_header.pug
+		//- コンテンツ
+		block contents
+		//- フッタ用ファイルの読み込み
+		include include/_inc_footer.pug
