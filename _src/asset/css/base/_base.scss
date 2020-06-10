@@ -81,3 +81,12 @@ h6{
 	// 	font-size: $font-size*1;
 	// }
 }
+textarea{
+	border: 1px solid $c-line;
+}
+input{
+	border: 1px solid $c-line;
+}
+table{
+	border-collapse: collapse;
+}
