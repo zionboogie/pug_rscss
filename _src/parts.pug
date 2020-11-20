@@ -1,0 +1,35 @@
+//- #########################################################
+
+	ファイル概要：コンポーネントにあたるパーツをすべて集める
+
+	#########################################################
+
+//- サイト共通レイアウトファイルを継承
+extends _layout.pug
+
+//- _layout.pugのvarsを再定義
+block vars
+	//- サイト全体の設定ファイルの読み込み
+	include _config.pug
+	//- ページ用変数を設定
+	- 
+		//- ページID
+		var id = "parts"
+		//- ページ設定
+		var page = {
+			url : id + '.html',
+			title : '',
+			description : '',
+			keywords : '',
+			image : image_path + '/ogp.jpg'
+		}
+		//- CSSファイル名
+		var cssfile = 'style.css'
+		//- JSファイル名
+		var jsfile = id + '-dist.js'	
+
+//- _layout.pugのcontentsを再定義
+block contents
+	main
+
+

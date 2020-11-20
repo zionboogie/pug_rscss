@@ -1,0 +1,12 @@
+.sidebar-container{
+	display: flex;
+	padding: 4px;
+	border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+// 横幅指定のバリアントがこのファイルでの宣言で良いのか？
+.sidebar-container{
+	&.-wide{
+		width: 40%;
+	}
+}

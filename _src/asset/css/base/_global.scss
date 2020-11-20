@@ -1,0 +1,201 @@
+
+
+/*#########################################################
+
+アニメーション
+
+#########################################################*/
+@keyframes fade{
+	0%{opacity:0}
+	100%{opacity:1}
+}
+
+
+
+/*#########################################################
+
+余白（なるべく使わない）
+
+#########################################################*/
+/* ========================================================
+下余白
+=========================================================*/
+/*
+.mb1{
+	margin-bottom: $mg*1;
+}
+.mb2{
+	margin-bottom: $mg*2;
+}
+.mb3{
+	margin-bottom: $mg*3;
+}
+.mb4{
+	margin-bottom: $mg*4;
+}
+.mb5{
+	margin-bottom: $mg*5;
+}
+*/
+/* ========================================================
+右余白
+=========================================================*/
+/*
+.mr1{
+	margin-right: $mg*1;
+}
+.mr2{
+	margin-right: $mg*2;
+}
+.mr3{
+	margin-right: $mg*3;
+}
+.mr4{
+	margin-right: $mg*4;
+}
+.mr5{
+	margin-right: $mg*5;
+}
+*/
+
+
+/*#########################################################
+
+共通アイコン・共通設定
+
+#########################################################*/
+
+/* ========================================================
+PC版・SP版専用設定(モバイルファースト用)
+=========================================================*/
+/*
+.pc{
+	display: none !important;
+	@include mq(lg){
+		display: inherit !important;
+	}
+}
+.sp{
+	display: inherit !important;
+	@include mq(lg){
+		display: none !important;
+	}
+}
+*/
+
+/* ========================================================
+PC版・SP版専用設定(PCファースト用)
+=========================================================*/
+.pc{
+	@include mq(md){
+		display: none !important;
+	}
+}
+.sp{
+	display: none !important;
+	@include mq(md){
+		display: inherit !important;
+	}
+}
+
+/* ========================================================
+矢印
+=========================================================*/
+$arrow-len: 9px;
+$arrow-width: 1px;
+%arrow-o-before{
+	width: $arrow-len;
+	height: $arrow-len;
+	border-top: $arrow-width solid #000;
+	border-right: $arrow-width solid #000;
+}
+%arrow-after{
+	width: $arrow-len;
+	height: $arrow-len;
+	border-top: $arrow-width solid #000;
+	border-right: $arrow-width solid #000;
+}
+.arrow {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	text-decoration: none;
+	text-indent: -10000px;
+	width: $arrow-len;
+	height: $arrow-len;
+	&::after,
+	&::before {
+		top: 0;
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		content: "";
+		margin: auto;
+		vertical-align: middle;
+	}
+	// 上下オープン矢印
+	&.-opendown::before,
+	&.-openup::before {
+		@extend %arrow-o-before;
+		transform: rotate(-45deg);
+	}
+	&.-opendown::before{
+		transform: rotate(135deg);
+	}
+	// 左右オープン矢印
+	&.-openleft::before,
+	&.-openright::before {
+		@extend %arrow-o-before;
+		transform: rotate(45deg);
+	}
+	&.-openleft::before{
+		transform: rotate(-135deg);
+	}
+
+	// 上下矢印
+	&.-up,
+	&.-down{
+		width: $arrow-len;
+		&::before{
+			right: 0;
+			width: $arrow-width;
+			height: $arrow-len;
+			background: #000;
+		}
+		&::after{
+			@extend %arrow-after;
+			transform: rotate(-45deg);
+		}
+	}
+	&.-down{
+		&::after{
+			transform: rotate(135deg);
+		}
+	}
+
+	// 左右矢印
+	&.-left,
+	&.-right{
+		&::before{
+			width: $arrow-len;
+			height: $arrow-width;
+			background: #000;
+		}
+		&::after{
+			@extend %arrow-after;
+			transform: rotate(45deg);
+		}
+	}
+	&.-left::after{
+		transform: rotate(-135deg);
+	}
+}
+
+
+/*#########################################################
+
+プロジェクト専用
+
+#########################################################*/
+
+

@@ -1,0 +1,55 @@
+//- #########################################################
+
+	ファイル概要：テンプレートファイル
+
+	#########################################################
+
+//- サイト共通レイアウトファイルを継承
+extends _rscss_layout.pug
+
+//- _layout.pugのvarsを再定義
+block vars
+	//- サイト全体の設定ファイルの読み込み
+	include _config.pug
+	//- ページ用変数を設定
+	- 
+		//- ページID
+		var id = "single"
+		//- ページ設定
+		var page = {
+			url : 'rscss_layout.html',
+			title : '',
+			description : '',
+			keywords : '',
+			image : image_path + '/ogp.jpg'
+		}
+		//- CSSファイル名
+		var cssfile = 'layout.css'
+		//- JSファイル名
+		var jsfile = ''	
+
+
+//- _rscss_layout.pugのcontentsを再定義
+block contents
+	//- レイアウトリスト
+	.horizontal-list
+		li
+			//- カードレイアウト
+			.card-container
+				//- ギャラリー
+				ul.gallery-container
+					- for (var x = 0; x < 9; x++)
+						li
+							.photo-box
+		li
+			//- カードレイアウト
+			.card-container
+				.main-container
+					.sidebar-container
+					.entry-container
+		li
+			//- カードレイアウト
+			.card-container
+				.main-container
+					.sidebar-container.-wide
+					.entry-container

@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+/*#########################################################
+
+読み込み
+
+#########################################################*/
+@import "base/ress.scss"; // normalize.cssを最近のWeb制作にあうようカスタマイズ
+// 変数・mixin
+@import "base/generic.scss";
+// タグのデフォルト
+@import "base/base.scss";
+// よく使うグローバルなElements集
+@import "base/global.scss";
+
+/* ========================================================
+外部スタイル
+=========================================================*/
+//- カードレイアウト
+@import "components/card-container.scss";
+
+//- ギャラリー
+@import "components/gallery-container.scss";
+//- 横リスト
+@import "components/horizontal-list.scss";
+
+//- 左右レイアウト
+@import "components/main-container.scss";
+//- サイドバー領域
+@import "components/sidebar-container.scss";
+//- エントリー領域
+@import "components/entry-container.scss";
+
+
+.photo-box{
+	background-color: rgba(0, 0, 0, 0.3);
+	height: 20px;
+	width: 100%;
+}

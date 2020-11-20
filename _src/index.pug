@@ -14,10 +14,10 @@ block vars
 	//- ページ用変数を設定
 	- 
 		//- ページID
-		var id = "top"
+		var id = "index"
 		//- ページ設定
 		var page = {
-			url : 'index.html',
+			url : id + '.html',
 			title : '',
 			description : '',
 			keywords : '',
@@ -26,7 +26,7 @@ block vars
 		//- CSSファイル名
 		var cssfile = 'style.css'
 		//- JSファイル名
-		var jsfile = 'top-dist.js'	
+		var jsfile = id + '-dist.js'	
 
 //- _layout.pugのcontentsを再定義
 block contents
