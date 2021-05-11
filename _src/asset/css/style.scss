@@ -47,7 +47,8 @@
 
 #########################################################*/
 
-@import "base/ress.scss"; // normalize.cssを最近のWeb制作にあうようカスタマイズ
+// normalize.cssを最近のWeb制作にあうようカスタマイズ
+@import "base/ress.scss";
 // 変数・mixin
 @import "base/generic.scss";
 // タグのデフォルト
@@ -67,9 +68,9 @@ JSライブラリ用
 Components
 =========================================================*/
 // サイトのヘッダ
-@import "components/site-header.scss";
+// @import "components/site-header.scss";
 // サイトのフッタ
-@import "components/site-footer.scss";
+// @import "components/site-footer.scss";
 
 /*
 これ以降からHelpersの上部の間に読み込みたいコンポーネントを追加
