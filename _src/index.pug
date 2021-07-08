@@ -17,11 +17,19 @@ block vars
 		var id = "index"
 		//- ページ設定
 		var page = {
-			url : id + '.html',
+			url : "/" + id + '.html',
 			title : '',
 			description : '',
 			keywords : '',
-			image : image_path + '/ogp.jpg'
+			image : image_path + '/ogp.jpg',
+			//- Facebook-App-ID：
+			fbappid : '',
+			//- Facebook-Facebookの個人アカウントにリレーションしているID（必要なければ設定しない）：
+			fbadmins : '',
+			//- Twitterカード-カードの種類：summary/summary_large_image/photo/gallery/app
+			twcard : 'summary_large_image',
+			//- Twitterカード-Twitterユーザ名：@ユーザー名
+			twsite : ''
 		}
 		//- CSSファイル名
 		var cssfile = 'style.css'
