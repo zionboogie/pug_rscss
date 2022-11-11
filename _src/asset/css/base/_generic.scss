@@ -155,3 +155,164 @@ $w-content: 1080px;
 		width: 95%;
 	}
 }
+
+
+
+/*#########################################################
+
+パーツ
+
+#########################################################*/
+
+/* ========================================================
+矢印
+使い方：
+@include arrow(矢印の線の長さ, 矢印の線の幅, 矢印の色);
+
+例：
+@include arrow(8px, 2px, #003b83);
+=========================================================*/
+@mixin arrow($ARROW-LEN, $ARROW-WIDTH, $ARROW-COLOR) {
+	%ARROW-O-BEFORE{
+		width: $ARROW-LEN;
+		height: $ARROW-LEN;
+		border-top: $ARROW-WIDTH solid $ARROW-COLOR;
+		border-right: $ARROW-WIDTH solid $ARROW-COLOR;
+	}
+	%ARROW-AFTER{
+		width: $ARROW-LEN;
+		height: $ARROW-LEN;
+		border-top: $ARROW-WIDTH solid $ARROW-COLOR;
+		border-right: $ARROW-WIDTH solid $ARROW-COLOR;
+	}
+	.arrow {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		text-decoration: none;
+		text-indent: -10000px;
+		width: $ARROW-LEN;
+		height: $ARROW-LEN;
+		&::after,
+		&::before {
+			top: 0;
+			bottom: 0;
+			left: 0;
+			position: absolute;
+			content: "";
+			margin: auto;
+			vertical-align: middle;
+		}
+		// 上下オープン矢印
+		&.-opendown::before,
+		&.-openup::before {
+			@extend %ARROW-O-BEFORE;
+			transform: rotate(-45deg);
+		}
+		&.-opendown::before{
+			transform: rotate(135deg);
+		}
+		// 左右オープン矢印
+		&.-openleft::before,
+		&.-openright::before {
+			@extend %ARROW-O-BEFORE;
+			transform: rotate(45deg);
+		}
+		&.-openleft::before{
+			transform: rotate(-135deg);
+		}
+	
+		// 上下矢印
+		&.-up,
+		&.-down{
+			width: $ARROW-LEN;
+			&::before{
+				right: 0;
+				width: $ARROW-WIDTH;
+				height: $ARROW-LEN;
+				background: $ARROW-COLOR;
+			}
+			&::after{
+				@extend %ARROW-AFTER;
+				transform: rotate(-45deg);
+			}
+		}
+		&.-down{
+			&::after{
+				transform: rotate(135deg);
+			}
+		}
+	
+		// 左右矢印
+		&.-left,
+		&.-right{
+			&::before{
+				width: $ARROW-LEN;
+				height: $ARROW-WIDTH;
+				background: $ARROW-COLOR;
+			}
+			&::after{
+				@extend %ARROW-AFTER;
+				transform: rotate(45deg);
+			}
+		}
+		&.-left::after{
+			transform: rotate(-135deg);
+		}
+
+		&.-upperright::before{
+			left: 3px;
+			width: 31px;
+			height: $ARROW-LEN;
+			background: $ARROW-COLOR;
+		}
+		&.-upperright::after{
+			top: -3px;
+			left: 30px;
+			width: 6px;
+			height: 0;
+			border-top: 1px solid $ARROW-COLOR;
+			border-right: 1px solid $ARROW-COLOR;
+			-webkit-transform: rotate(45deg);
+			transform: rotate(45deg);
+		}
+	}
+}
+
+/* ========================================================
+リボン
+使い方：
+@include arrow(矢印の長さ, 矢印の幅, りぼんの色, テキストの色);
+
+例：
+@include arrow(14px, 10px, #E10000, #FFFFFF);
+=========================================================*/
+@mixin ribon($LEN, $WIDTH, $BCOLOR, $FCOLOR){
+	height: $LEN*2;
+	display: flex;
+	align-items: center;
+	background-color: $BCOLOR;
+	color: $FCOLOR;
+	&:before {
+		content: '';
+		position: absolute;
+		top: 100%;
+		left: 0;
+		border: none;
+		// border-right: solid 5px #E10000;
+		border-bottom: solid 5px transparent;
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		width: 0;
+		height: 0;
+		top: 0;
+		right: -$WIDTH;
+		z-index: 1;
+		border-style: solid;
+		border-width: $LEN $WIDTH $LEN 0;
+		border-color: $BCOLOR transparent;
+	}
+
+}
